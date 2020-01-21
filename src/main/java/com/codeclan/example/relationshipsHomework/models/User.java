@@ -1,4 +1,4 @@
-package com.codeclan.example.relationshipsHomework;
+package com.codeclan.example.relationshipsHomework.models;
 
 import javax.persistence.*;
 
