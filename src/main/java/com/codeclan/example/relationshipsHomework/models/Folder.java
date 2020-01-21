@@ -1,5 +1,7 @@
 package com.codeclan.example.relationshipsHomework.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,12 +15,18 @@ public class Folder {
     @Column(name = "title")
     private String title;
 
+    @JsonIgnoreProperties("folders")
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
     public Folder() {
 
     }
 
-    public Folder(String title) {
+    public Folder(String title, User user) {
         this.title = title;
+        this.user = user;
     }
 
     public long getId() {
@@ -35,5 +43,13 @@ public class Folder {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
